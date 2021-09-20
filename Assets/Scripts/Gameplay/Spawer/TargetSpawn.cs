@@ -42,7 +42,7 @@ public class TargetSpawn : StateBase
 
         isAllowSpawn = true;
         
-        StartCoroutine(SpawnTarget(spawnRate));
+        StartCoroutine(Spawn(spawnRate));
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class TargetSpawn : StateBase
 
         isAllowSpawn = false;
 
-        StopCoroutine(SpawnTarget(spawnRate));
+        StopCoroutine(Spawn(spawnRate));
     }
 
 
@@ -74,7 +74,7 @@ public class TargetSpawn : StateBase
         spawnRate = spawnSO.Difficulties.Find(p => p.Index == index).SpawnTime;
     }
 
-    private IEnumerator SpawnTarget(float time)
+    private IEnumerator Spawn(float time)
     {
         while (isAllowSpawn)
         {

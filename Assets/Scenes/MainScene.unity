@@ -484,7 +484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &65517366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3956,9 +3956,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1770050816}
   - component: {fileID: 1770050815}
+  - component: {fileID: 1770050820}
+  - component: {fileID: 1770050823}
   - component: {fileID: 1770050818}
   - component: {fileID: 1770050819}
   - component: {fileID: 1770050817}
+  - component: {fileID: 1770050821}
+  - component: {fileID: 1770050822}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -4090,6 +4094,89 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1770050820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770050814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5edd1cbcaa52224f844346a0974271c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1770050821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770050814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278f1763ea402be429351e373e7b2515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: 1983c3c144b532c47b4d6bafc356a48d, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1770050820}
+        m_TargetAssemblyTypeName: VFXSpawn, Assembly-CSharp
+        m_MethodName: SpawnExplotionVFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1770050822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770050814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91ca479c7c29df419c8b72315fbff76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: 903968f074c367e46872430207e4dd34, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1770050823}
+        m_TargetAssemblyTypeName: FloatScoreSpawn, Assembly-CSharp
+        m_MethodName: SpawnFloatScore
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1770050823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770050814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fc58e1870be364c9ebc28818b5d9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreFloatSO: {fileID: 11400000, guid: 88332651b6e91524898080ff176c9b09, type: 2}
+  onTargetClickEvent: {fileID: 11400000, guid: da222f2f0bed94642be99d5f182bd4cc, type: 2}
+  isFailedConfig: 0
 --- !u!1 &1823512603
 GameObject:
   m_ObjectHideFlags: 0

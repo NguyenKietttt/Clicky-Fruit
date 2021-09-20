@@ -8,19 +8,24 @@ public class TargetOnCick : MonoBehaviour
     [Header("Events")]
     [SerializeField] private IntEventSO onTargetClickEvent;
     [SerializeField] private ScoreEventSO floatScoreEvent;
+    [SerializeField] private VFXEventSO explosionVFXPosEvent;
 
     [Header("Validation")]
 	[SerializeField] private bool isFailedConfig;
 
-    public GameObject floatScore;
+    private Transform cachedTransform;
 
 
     private void OnValidate() 
     {
         CustomLogs.Instance.Warning(targetSO == null, "targetSO is missing!!!");
-        CustomLogs.Instance.Warning(onTargetClickEvent == null, "onTargetClickEvent is missing!!!");
 
-        isFailedConfig = targetSO == null || onTargetClickEvent == null;
+        CustomLogs.Instance.Warning(onTargetClickEvent == null, "onTargetClickEvent is missing!!!");
+        CustomLogs.Instance.Warning(floatScoreEvent == null, "floatScoreEvent is missing!!!");
+        CustomLogs.Instance.Warning(explosionVFXPosEvent == null, "explosionVFXPosEvent is missing!!!");
+
+        isFailedConfig = targetSO == null || onTargetClickEvent == null || floatScoreEvent == null
+            || explosionVFXPosEvent == null;
     }
 
 
@@ -35,9 +40,12 @@ public class TargetOnCick : MonoBehaviour
         if (instanceID != gameObject.GetInstanceID())
             return;
 
+        if (cachedTransform == null)
+            cachedTransform = transform;
+
         if (gameObject.CompareTag("Bad Target"))
         {
-            (targetSO as BadTargetSO).Explode(transform.position);
+            (targetSO as BadTargetSO).Explode(cachedTransform.position);
             onTargetClickEvent.RaiseEvent(-1); // -1 => Bad Target does not have point
         }
         
@@ -45,34 +53,22 @@ public class TargetOnCick : MonoBehaviour
         {
             int point = (targetSO as GoodTargetSO).Point;
 
-            SpawnFloatText(point);
-
-            onTargetClickEvent.RaiseEvent(point);
+            RaiseFloatScoreEvent(point);
         }
 
-
+        RaiseVFXEvent();
         ObjectPooler.Instance.ReturnGameObjectToPool(gameObject);
-        SpawnExplotionVFX();
     }
 
-    private void SpawnExplotionVFX()
+    private void RaiseVFXEvent()
     {
-        GameObject explotion = Instantiate(targetSO.ExplotionVFX, transform.position, 
-            targetSO.ExplotionVFX.transform.rotation);
-
-        Destroy(explotion, targetSO.Lifetime);
+        var vfx = new VFXData(targetSO.ExplotionVFX, cachedTransform.position, targetSO.Lifetime);
+        explosionVFXPosEvent.RaiseEvent(vfx);
     }
 
-    private void SpawnFloatText(int point)
+    private void RaiseFloatScoreEvent(int point)
     {
-        var temp = Instantiate(floatScore, transform.position, Quaternion.identity);
-            ScoreData scoreData = new ScoreData()
-            {
-                Id = temp.GetInstanceID(),
-                Score = point,
-                Color = (targetSO as GoodTargetSO).Color
-            };
-            
+        var scoreData = new ScoreFloatData(point, cachedTransform.position, (targetSO as GoodTargetSO).Color);
         floatScoreEvent.RaiseEvent(scoreData);
     }
 }

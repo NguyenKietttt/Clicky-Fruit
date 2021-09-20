@@ -33,7 +33,7 @@ public class ScoreController : StateBase
 
 
     /// <summary>
-    /// Raise by OnGoodTargetClick Event from TargetOnClick
+    /// Raise by OnGoodTargetClick Event from FloatScoreSpawn
     /// </summary>
     public void UpdateScore(int score)
     {

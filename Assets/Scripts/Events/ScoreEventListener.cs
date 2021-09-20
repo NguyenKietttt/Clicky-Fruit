@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class UnityScoreEvent : UnityEvent<ScoreData> { }
+public class UnityScoreEvent : UnityEvent<ScoreFloatData> { }
 
 public class ScoreEventListener : MonoBehaviour
 {
@@ -23,5 +23,5 @@ public class ScoreEventListener : MonoBehaviour
 			listen.OnEventRaised -= Respond;
     }
 
-    public void Respond(ScoreData scoreData) => onEventRaised.Invoke(scoreData);
+    public void Respond(ScoreFloatData scoreData) => onEventRaised.Invoke(scoreData);
 }
