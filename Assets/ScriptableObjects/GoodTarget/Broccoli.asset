@@ -21,3 +21,4 @@ MonoBehaviour:
   explotionVFX: {fileID: 8550054505309090576, guid: 6c4fe7136154ab142b38e7ebc2309417, type: 3}
   lifetime: 1
   point: 4
+  color: {r: 0.36862746, g: 0.8196079, b: 0.6862745, a: 0}

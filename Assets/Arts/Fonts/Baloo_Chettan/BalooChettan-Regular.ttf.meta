@@ -3,12 +3,11 @@ guid: 1de092811748445db9e4b7597a8204d1
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 16
+  fontSize: 200
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Baloo Chettan
   fontNames:
   - Baloo Chettan
   fallbackFontReferences: []

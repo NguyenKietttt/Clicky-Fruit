@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSO: {fileID: 11400000, guid: b7a6bac9c87f6ce4eaf79401161b3ee7, type: 2}
   targetRb: {fileID: 7346904440533300039}
+  isFailedConfig: 0
 --- !u!114 &7346904440533300037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,8 +146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSO: {fileID: 11400000, guid: b7a6bac9c87f6ce4eaf79401161b3ee7, type: 2}
   onTargetClickEvent: {fileID: 11400000, guid: da222f2f0bed94642be99d5f182bd4cc, type: 2}
-  radius: 0
-  power: 0
+  floatScoreEvent: {fileID: 11400000, guid: 903968f074c367e46872430207e4dd34, type: 2}
+  isFailedConfig: 0
+  floatScore: {fileID: 2840022328950221479, guid: d9097a96a93629d4f80e9923595be835, type: 3}
 --- !u!114 &7346904440533300036
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,9 +7,12 @@ public class TargetOnCick : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private IntEventSO onTargetClickEvent;
+    [SerializeField] private ScoreEventSO floatScoreEvent;
 
     [Header("Validation")]
 	[SerializeField] private bool isFailedConfig;
+
+    public GameObject floatScore;
 
 
     private void OnValidate() 
@@ -39,7 +42,13 @@ public class TargetOnCick : MonoBehaviour
         }
         
         if (gameObject.CompareTag("Good Target"))
-            onTargetClickEvent.RaiseEvent((targetSO as GoodTargetSO).Point);
+        {
+            int point = (targetSO as GoodTargetSO).Point;
+
+            SpawnFloatText(point);
+
+            onTargetClickEvent.RaiseEvent(point);
+        }
 
 
         ObjectPooler.Instance.ReturnGameObjectToPool(gameObject);
@@ -52,5 +61,18 @@ public class TargetOnCick : MonoBehaviour
             targetSO.ExplotionVFX.transform.rotation);
 
         Destroy(explotion, targetSO.Lifetime);
+    }
+
+    private void SpawnFloatText(int point)
+    {
+        var temp = Instantiate(floatScore, transform.position, Quaternion.identity);
+            ScoreData scoreData = new ScoreData()
+            {
+                Id = temp.GetInstanceID(),
+                Score = point,
+                Color = (targetSO as GoodTargetSO).Color
+            };
+            
+        floatScoreEvent.RaiseEvent(scoreData);
     }
 }
