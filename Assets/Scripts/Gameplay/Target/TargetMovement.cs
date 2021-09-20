@@ -26,10 +26,7 @@ public class TargetMovement : MonoBehaviour
     {
         if (isFailedConfig)
             enabled = false;
-    }
 
-    private void Start() 
-    {
         SpawnRandomOnXRange();
 
         TossTarget();
@@ -39,6 +36,8 @@ public class TargetMovement : MonoBehaviour
 
     private void SpawnRandomOnXRange()
     {
+        targetRb.velocity = Vector3.zero;
+        
         var randomX = Random.Range(-targetSO.XRange, targetSO.XRange);
         var vectorPos = new Vector3(randomX, targetSO.YPos, 0.0f);
 

@@ -42,7 +42,7 @@ public class TargetOnCick : MonoBehaviour
             onTargetClickEvent.RaiseEvent((targetSO as GoodTargetSO).Point);
 
 
-        Destroy(gameObject);
+        ObjectPooler.Instance.ReturnGameObjectToPool(gameObject);
         SpawnExplotionVFX();
     }
 

@@ -81,7 +81,7 @@ public class TargetSpawn : StateBase
             yield return new WaitForSeconds(time);
 
             var index = Random.Range(0, spawnSO.SpawnTargets.Count);
-            Instantiate(spawnSO.SpawnTargets[index]);
+            ObjectPooler.Instance.GetObjectFromPool(spawnSO.SpawnTargets[index]);
         }
     }
 }

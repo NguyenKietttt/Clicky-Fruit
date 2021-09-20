@@ -24,6 +24,6 @@ public class SensorTrigger : MonoBehaviour
         if (other.CompareTag("Good Target"))
             reduceLifeEvent.RaiseEvent();
 
-        Destroy(other.gameObject);
+        ObjectPooler.Instance.ReturnGameObjectToPool(other.gameObject);
     }
 }
