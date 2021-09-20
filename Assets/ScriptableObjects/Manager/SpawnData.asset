@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece685e026a93424dafc24c6acc146f8, type: 3}
+  m_Name: SpawnData
+  m_EditorClassIdentifier: 
+  spawnTargets:
+  - {fileID: 2817609476818962109, guid: 26a5c67aafc731342bad7f0bbe09dfb6, type: 3}
+  - {fileID: 7580714276269901057, guid: 18a88dd75918f344ca262544f62a407c, type: 3}
+  - {fileID: 8900851923696695618, guid: 0eb0f36ab4664bc44874a3c5e782505b, type: 3}
+  - {fileID: 7654582025768070634, guid: 9080f9d3c9915b24681c0efb4fba66bb, type: 3}
+  difficulties:
+  - index: 0
+    name: Easy
+    spawnTime: 2
+  - index: 1
+    name: Normal
+    spawnTime: 1
+  - index: 2
+    name: Hard
+    spawnTime: 0.5

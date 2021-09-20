@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b633e0ec1c3dee4691dd990318b9850, type: 3}
+  m_Name: Pumpkin
+  m_EditorClassIdentifier: 
+  minTossForce: 24
+  maxTossForce: 28
+  minTorqueForce: -2
+  maxTorqueForce: 2
+  xRange: 4
+  yPos: -3
+  explotionVFX: {fileID: 7373890749866618426, guid: c188d8bad1dd5164c8712dede6fa27b9, type: 3}
+  lifetime: 1
+  point: 2
