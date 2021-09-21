@@ -3,7 +3,7 @@ using UnityEngine;
 public class SensorTrigger : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] private VoidEventSO reduceLifeEvent;
+    [SerializeField] private TextFloatEventSO lifeScoreEvent;
 
     [Header("Validation")]
 	[SerializeField] private bool isFailedConfig;
@@ -11,9 +11,9 @@ public class SensorTrigger : MonoBehaviour
 
     private void OnValidate() 
     {
-        CustomLogs.Instance.Warning(reduceLifeEvent == null, "reduceLifeEvent is missing!!!");
+        CustomLogs.Instance.Warning(lifeScoreEvent == null, "lifeScoreEvent is missing!!!");
 
-        isFailedConfig = reduceLifeEvent == null;
+        isFailedConfig = lifeScoreEvent == null;
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -22,8 +22,14 @@ public class SensorTrigger : MonoBehaviour
             return;
 
         if (other.CompareTag("Good Target"))
-            reduceLifeEvent.RaiseEvent();
+            RaiseFloatLifeEvent(other.gameObject);
 
         ObjectPooler.Instance.ReturnGameObjectToPool(other.gameObject);
+    }
+
+    private void RaiseFloatLifeEvent(GameObject target)
+    {
+        var scoreData = new ScoreFloatData(-1, target.transform.position, Color.black);
+        lifeScoreEvent.RaiseEvent(scoreData);
     }
 }

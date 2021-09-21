@@ -3827,7 +3827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6679b363a1be84da514e86942aefbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reduceLifeEvent: {fileID: 11400000, guid: 4cbeee7e0c80269448ea4d6af56667af, type: 2}
+  lifeScoreEvent: {fileID: 11400000, guid: a94acc22b1e73eb46b4df73b43c1f82d, type: 2}
   isFailedConfig: 0
 --- !u!4 &1611319334
 Transform:
@@ -3963,6 +3963,7 @@ GameObject:
   - component: {fileID: 1770050817}
   - component: {fileID: 1770050821}
   - component: {fileID: 1770050822}
+  - component: {fileID: 1770050824}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -4026,6 +4027,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1770050823}
+        m_TargetAssemblyTypeName: FloatTextSpawn, Assembly-CSharp
+        m_MethodName: OnGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1770050818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4056,6 +4069,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1770050815}
         m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: OnGameplay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1770050823}
+        m_TargetAssemblyTypeName: FloatTextSpawn, Assembly-CSharp
         m_MethodName: OnGameplay
         m_Mode: 1
         m_Arguments:
@@ -4175,8 +4200,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreFloatSO: {fileID: 11400000, guid: 88332651b6e91524898080ff176c9b09, type: 2}
+  lifeFloatSO: {fileID: 11400000, guid: 5d5f87432475d654e9381f25660868ee, type: 2}
   onTargetClickEvent: {fileID: 11400000, guid: da222f2f0bed94642be99d5f182bd4cc, type: 2}
+  reduceLifeEvent: {fileID: 11400000, guid: 4cbeee7e0c80269448ea4d6af56667af, type: 2}
   isFailedConfig: 0
+--- !u!114 &1770050824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770050814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91ca479c7c29df419c8b72315fbff76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: a94acc22b1e73eb46b4df73b43c1f82d, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1770050823}
+        m_TargetAssemblyTypeName: FloatTextSpawn, Assembly-CSharp
+        m_MethodName: SpawnFloatLife
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1823512603
 GameObject:
   m_ObjectHideFlags: 0

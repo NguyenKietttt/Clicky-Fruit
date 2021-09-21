@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "New Score Event", menuName = "SciptableObject/Event/Score Game Event")] 
-public class ScoreEventSO : ScriptableObject
+[CreateAssetMenu(fileName = "New TextFloat Event", menuName = "SciptableObject/Event/TextFloat Event")] 
+public class TextFloatEventSO : ScriptableObject
 {
     public UnityAction<ScoreFloatData> OnEventRaised;
     

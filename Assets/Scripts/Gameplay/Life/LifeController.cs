@@ -55,7 +55,7 @@ public class LifeController : StateBase
     }
 
     /// <summary>
-    /// Raise by ReduceLife Event from SensorTrigger
+    /// Raise by ReduceLife Event from FloatTextSpawn
     /// </summary>
     public void ReduceOneLife()
     {

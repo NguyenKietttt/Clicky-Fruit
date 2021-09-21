@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Float Score Data", menuName = "SciptableObject/Score/Float Score Data")]
-public class ScoreFloatSO : ScriptableObject
+[CreateAssetMenu(fileName = "New Float Text Data", menuName = "SciptableObject/Float Text/Float Text Data")]
+public class TextFloatSO : ScriptableObject
 {
     [Header("Score float prefab")]
     [SerializeField] private GameObject prefab;
@@ -14,8 +14,8 @@ public class ScoreFloatSO : ScriptableObject
     [SerializeField] private float moveToMainScoreTime;
     [SerializeField] private float fadeTime;
 
-    [Header("Main score position")]
-    [SerializeField] private Vector3 mainScorePos;
+    [Header("Position")]
+    [SerializeField] private Vector3 endPos;
 
 
     #region Properties
@@ -25,7 +25,7 @@ public class ScoreFloatSO : ScriptableObject
     public float MoveUpTime => moveUpTime;
     public float FadeTime => fadeTime;
     public float MoveToMainScoreTime => moveToMainScoreTime;
-    public Vector3 MainScorePos => mainScorePos;
+    public Vector3 EndPos => endPos;
 
     #endregion
 }

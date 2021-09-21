@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class UnityScoreEvent : UnityEvent<ScoreFloatData> { }
+public class UnityTextFloatEvent : UnityEvent<ScoreFloatData> { }
 
-public class ScoreEventListener : MonoBehaviour
+public class TextFloatEventListener : MonoBehaviour
 {
-    [SerializeField] private ScoreEventSO listen;
-    [SerializeField] private UnityScoreEvent onEventRaised;
+    [SerializeField] private TextFloatEventSO listen;
+    [SerializeField] private UnityTextFloatEvent onEventRaised;
 
     private void OnEnable()
     {

@@ -7,7 +7,7 @@ public class TargetOnCick : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private IntEventSO onTargetClickEvent;
-    [SerializeField] private ScoreEventSO floatScoreEvent;
+    [SerializeField] private TextFloatEventSO floatScoreEvent;
     [SerializeField] private VFXEventSO explosionVFXPosEvent;
 
     [Header("Validation")]
