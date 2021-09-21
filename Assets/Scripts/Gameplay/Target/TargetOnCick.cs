@@ -8,6 +8,7 @@ public class TargetOnCick : MonoBehaviour
     [Header("Events")]
     [SerializeField] private IntEventSO onTargetClickEvent;
     [SerializeField] private TextFloatEventSO floatScoreEvent;
+    [SerializeField] private VFXEventSO rippleVFXEvent;
     [SerializeField] private VFXEventSO explosionVFXPosEvent;
 
     [Header("Validation")]
@@ -23,9 +24,10 @@ public class TargetOnCick : MonoBehaviour
         CustomLogs.Instance.Warning(onTargetClickEvent == null, "onTargetClickEvent is missing!!!");
         CustomLogs.Instance.Warning(floatScoreEvent == null, "floatScoreEvent is missing!!!");
         CustomLogs.Instance.Warning(explosionVFXPosEvent == null, "explosionVFXPosEvent is missing!!!");
+        CustomLogs.Instance.Warning(explosionVFXPosEvent == null, "explosionVFXPosEvent is missing!!!");
 
         isFailedConfig = targetSO == null || onTargetClickEvent == null || floatScoreEvent == null
-            || explosionVFXPosEvent == null;
+            || explosionVFXPosEvent == null || explosionVFXPosEvent == null;
     }
 
 
@@ -46,6 +48,8 @@ public class TargetOnCick : MonoBehaviour
         if (gameObject.CompareTag("Bad Target"))
         {
             (targetSO as BadTargetSO).Explode(cachedTransform.position);
+
+            RaiseRippleVFXEvent();
             onTargetClickEvent.RaiseEvent(-1); // -1 => Bad Target does not have point
         }
         
@@ -56,11 +60,17 @@ public class TargetOnCick : MonoBehaviour
             RaiseFloatScoreEvent(point);
         }
 
-        RaiseVFXEvent();
+        RaiseExplotionVFXEvent();
         ObjectPooler.Instance.ReturnGameObjectToPool(gameObject);
     }
 
-    private void RaiseVFXEvent()
+    private void RaiseRippleVFXEvent()
+    {
+        var vfx = new VFXData(null, cachedTransform.position, 0.0f);
+        rippleVFXEvent.RaiseEvent(vfx);
+    }
+
+    private void RaiseExplotionVFXEvent()
     {
         var vfx = new VFXData(targetSO.ExplotionVFX, cachedTransform.position, targetSO.Lifetime);
         explosionVFXPosEvent.RaiseEvent(vfx);

@@ -146,9 +146,9 @@ MonoBehaviour:
   targetSO: {fileID: 11400000, guid: 7fde92d6b3186d64690d7727fd826e86, type: 2}
   onTargetClickEvent: {fileID: 11400000, guid: da222f2f0bed94642be99d5f182bd4cc, type: 2}
   floatScoreEvent: {fileID: 11400000, guid: 903968f074c367e46872430207e4dd34, type: 2}
+  rippleVFXEvent: {fileID: 11400000, guid: 785ed70a09c9edd4babf2b05834ad07c, type: 2}
   explosionVFXPosEvent: {fileID: 11400000, guid: 1983c3c144b532c47b4d6bafc356a48d, type: 2}
   isFailedConfig: 0
-  floatScore: {fileID: 2840022328950221479, guid: d9097a96a93629d4f80e9923595be835, type: 3}
 --- !u!114 &3586908539249758448
 MonoBehaviour:
   m_ObjectHideFlags: 0
