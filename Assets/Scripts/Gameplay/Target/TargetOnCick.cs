@@ -10,14 +10,15 @@ public class TargetOnCick : MonoBehaviour
     [SerializeField] private TextFloatEventSO floatScoreEvent;
     [SerializeField] private VFXEventSO rippleVFXEvent;
     [SerializeField] private VFXEventSO explosionVFXPosEvent;
+    [SerializeField] private SFXEventSO chewSFXEvent;
 
     [Header("Validation")]
-	[SerializeField] private bool isFailedConfig;
+    [SerializeField] private bool isFailedConfig;
 
     private Transform cachedTransform;
 
 
-    private void OnValidate() 
+    private void OnValidate()
     {
         CustomLogs.Instance.Warning(targetSO == null, "targetSO is missing!!!");
 
@@ -25,16 +26,17 @@ public class TargetOnCick : MonoBehaviour
         CustomLogs.Instance.Warning(floatScoreEvent == null, "floatScoreEvent is missing!!!");
         CustomLogs.Instance.Warning(explosionVFXPosEvent == null, "explosionVFXPosEvent is missing!!!");
         CustomLogs.Instance.Warning(explosionVFXPosEvent == null, "explosionVFXPosEvent is missing!!!");
+        CustomLogs.Instance.Warning(chewSFXEvent == null, "chewSFXEvent is missing!!!");
 
         isFailedConfig = targetSO == null || onTargetClickEvent == null || floatScoreEvent == null
-            || explosionVFXPosEvent == null || explosionVFXPosEvent == null;
+            || explosionVFXPosEvent == null || explosionVFXPosEvent == null || chewSFXEvent == null;
     }
 
 
     /// <summary>
     ///  Raise by ClickByPlayer Event from InputManager
     /// </summary>
-    public void OnClick(int instanceID) 
+    public void OnClick(int instanceID)
     {
         if (isFailedConfig)
             return;
@@ -47,38 +49,42 @@ public class TargetOnCick : MonoBehaviour
 
         if (gameObject.CompareTag("Bad Target"))
         {
-            (targetSO as BadTargetSO).Explode(cachedTransform.position);
+            var badTarget = (targetSO as BadTargetSO);
 
-            RaiseRippleVFXEvent();
+            badTarget.Explode(cachedTransform.position);
+
+            RaiseVFXEvent(null, cachedTransform.position, 0.0f, rippleVFXEvent);
             onTargetClickEvent.RaiseEvent(-1); // -1 => Bad Target does not have point
         }
-        
+
         if (gameObject.CompareTag("Good Target"))
         {
-            int point = (targetSO as GoodTargetSO).Point;
+            var goodTarget = (targetSO as GoodTargetSO);
 
-            RaiseFloatScoreEvent(point);
+            RaiseSFXEvent(goodTarget.Sounds[0]);
+            RaiseFloatScoreEvent(goodTarget.Point);
         }
 
-        RaiseExplotionVFXEvent();
+        RaiseVFXEvent(targetSO.ExplotionVFX, cachedTransform.position, targetSO.Lifetime, explosionVFXPosEvent);
         ObjectPooler.Instance.ReturnGameObjectToPool(gameObject);
     }
 
-    private void RaiseRippleVFXEvent()
+    private void RaiseSFXEvent(AudioClip clip)
     {
-        var vfx = new VFXData(null, cachedTransform.position, 0.0f);
-        rippleVFXEvent.RaiseEvent(vfx);
+        chewSFXEvent.RaiseEvent(clip);
     }
 
-    private void RaiseExplotionVFXEvent()
+    private void RaiseVFXEvent(GameObject vfxObject, Vector3 position, float lifetime, VFXEventSO e)
     {
-        var vfx = new VFXData(targetSO.ExplotionVFX, cachedTransform.position, targetSO.Lifetime);
-        explosionVFXPosEvent.RaiseEvent(vfx);
+        var vfx = new VFXData(vfxObject, position, lifetime);
+        
+        e.RaiseEvent(vfx);
     }
 
     private void RaiseFloatScoreEvent(int point)
     {
         var scoreData = new ScoreFloatData(point, cachedTransform.position, (targetSO as GoodTargetSO).Color);
+
         floatScoreEvent.RaiseEvent(scoreData);
     }
 }

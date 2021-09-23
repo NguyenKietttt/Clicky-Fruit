@@ -20,5 +20,7 @@ MonoBehaviour:
   yPos: -3
   explotionVFX: {fileID: 7373890749866618426, guid: c188d8bad1dd5164c8712dede6fa27b9, type: 3}
   lifetime: 1
+  sounds:
+  - {fileID: 8300000, guid: 8a44589d4d0103c4d9faefad62b9cd62, type: 3}
   point: 2
   color: {r: 1, g: 0.5, b: 0, a: 1}

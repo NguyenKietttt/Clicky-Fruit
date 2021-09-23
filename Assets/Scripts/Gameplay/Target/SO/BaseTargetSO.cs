@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseTargetSO : ScriptableObject
@@ -14,9 +15,12 @@ public class BaseTargetSO : ScriptableObject
     [SerializeField] [Range(-4.0f, 4.0f)] private float xRange;
     [SerializeField] [Range(-6.0f, -1.0f)] private float yPos;
 
-    [Header("VFXs")]
+    [Header("VFX")]
     [SerializeField] private GameObject explotionVFX;
     [SerializeField] private float lifetime;
+
+    [Header("Sound")]
+    [SerializeField] private List<AudioClip> sounds;
 
 
     #region Properties
@@ -29,6 +33,7 @@ public class BaseTargetSO : ScriptableObject
     public float YPos => yPos;
     public GameObject ExplotionVFX => explotionVFX;
     public float Lifetime => lifetime;
+    public List<AudioClip> Sounds => sounds;
 
     #endregion
 }

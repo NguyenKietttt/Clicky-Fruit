@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fbb2363ae584bb4084aa5013ef53549, type: 3}
-  m_Name: AudioData
+  m_Script: {fileID: 11500000, guid: 50a52f374ae239645a11a6b62c602eb6, type: 3}
+  m_Name: ChewSFX
   m_EditorClassIdentifier: 
-  tracks:
-  - {fileID: 8300000, guid: 26f294028046bf04cab0fa6789f6ca09, type: 3}
-  musicVolume: 0

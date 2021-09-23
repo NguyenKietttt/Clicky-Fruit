@@ -7,7 +7,7 @@ public class AudioState : StateBase
     [SerializeField] private AudioSO audioSO;
 
     [Header("References")]
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource musicSource;
 
     [Header("Validation")]
 	[SerializeField] private bool isFailedConfig;
@@ -16,9 +16,9 @@ public class AudioState : StateBase
     private void OnValidate() 
     {
         CustomLogs.Instance.Warning(audioSO == null, "audioSO is missing!!!");
-        CustomLogs.Instance.Warning(audioSource == null, "audioSource is missing!!!");
+        CustomLogs.Instance.Warning(musicSource == null, "audioSource is missing!!!");
 
-        isFailedConfig = audioSO == null || audioSource == null;
+        isFailedConfig = audioSO == null || musicSource == null;
     }
 
 
@@ -30,10 +30,10 @@ public class AudioState : StateBase
         if (isFailedConfig)
             return;
 
-        if (!audioSource.isPlaying)
+        if (!musicSource.isPlaying)
         {
-            audioSource.clip = audioSO.Musics.First();
-            audioSource.Play();
+            musicSource.clip = audioSO.Tracks.First();
+            musicSource.Play();
         }
     }
 }

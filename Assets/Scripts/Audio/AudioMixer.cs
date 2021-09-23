@@ -6,7 +6,8 @@ public class AudioMixer : MonoBehaviour
     [SerializeField] private AudioSO audioSO;
 
     [Header("References")]
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource soundSource;
 
     [Header("Validation")]
 	[SerializeField] private bool isFailedConfig;
@@ -15,9 +16,11 @@ public class AudioMixer : MonoBehaviour
     private void OnValidate() 
     {
         CustomLogs.Instance.Warning(audioSO == null, "audioSO is missing!!!");
-        CustomLogs.Instance.Warning(audioSource == null, "audioSource is missing!!!");
 
-        isFailedConfig = audioSO == null || audioSource == null;
+        CustomLogs.Instance.Warning(musicSource == null, "musicSource is missing!!!");
+        CustomLogs.Instance.Warning(soundSource == null, "soundSource is missing!!!");
+
+        isFailedConfig = audioSO == null || musicSource == null || soundSource == null;
     }
 
 
@@ -29,9 +32,20 @@ public class AudioMixer : MonoBehaviour
         if (isFailedConfig)
             return;
             
-        audioSource.volume = vol;
+        musicSource.volume = vol;
 
         // Save audio volume
         audioSO.MusicVolume = vol;
+    }
+
+    /// <summary>
+    /// Raise by ChewSFX Event from TargetOnClick
+    /// </summary>
+    public void PlaySFX(AudioClip sound)
+    {
+        if (isFailedConfig)
+            return;
+            
+        soundSource.PlayOneShot(sound);
     }
 }
