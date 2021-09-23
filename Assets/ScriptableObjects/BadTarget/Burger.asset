@@ -21,6 +21,7 @@ MonoBehaviour:
   explotionVFX: {fileID: 4513911023088410786, guid: ce004c42cc377064daccb429d1ddced6, type: 3}
   lifetime: 1
   sounds:
-  - {fileID: 8300000, guid: 17341527ae57b8a4d8d7cac35ffc313b, type: 3}
+  - {fileID: 8300000, guid: 7640b8007ea5b7241ad0919815f4ecbe, type: 3}
+  - {fileID: 8300000, guid: 74af9d9e74886b3439f0a48bc7f4a3b3, type: 3}
   radius: 20
   power: 15

@@ -1,4 +1,4 @@
-using TMPro;
+using System.Collections;
 using UnityEngine;
 
 public class UIPanel : StateBase
@@ -74,7 +74,7 @@ public class UIPanel : StateBase
         if (isFailedConfig)
             return;
 
-        gameOverPanel.SetActive(true);
+        StartCoroutine(SlowTimeBeforeGameOver());
     }
 
 
@@ -84,5 +84,14 @@ public class UIPanel : StateBase
             pausePanel.SetActive(true);
         else
             pausePanel.SetActive(false);
+    }
+
+    IEnumerator SlowTimeBeforeGameOver()
+    {
+        Time.timeScale = 0.5f;
+
+        yield return new WaitForSeconds(1.0f);
+        Time.timeScale = 1.0f;
+        gameOverPanel.SetActive(true);
     }
 }

@@ -95,7 +95,10 @@ GameObject:
   - component: {fileID: 2817609476818962108}
   - component: {fileID: 7529550865156378014}
   - component: {fileID: 1877609359433655733}
+  - component: {fileID: 6719265817312515846}
   - component: {fileID: -3290247927857764523}
+  - component: {fileID: 1371231734461863803}
+  - component: {fileID: 1930597789222904103}
   m_Layer: 6
   m_Name: Burger
   m_TagString: Bad Target
@@ -200,10 +203,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSO: {fileID: 11400000, guid: d2e2f7f6419bedb41a06d5e289f0789e, type: 2}
   onTargetClickEvent: {fileID: 11400000, guid: e1cdbbf84b726e94da92b683f03eecf8, type: 2}
+  onTargetClickSFXEvent: {fileID: 11400000, guid: 2fc8dae05f13a7346acce6bf8e7b340a, type: 2}
   floatScoreEvent: {fileID: 11400000, guid: 903968f074c367e46872430207e4dd34, type: 2}
   rippleVFXEvent: {fileID: 11400000, guid: 785ed70a09c9edd4babf2b05834ad07c, type: 2}
   explosionVFXPosEvent: {fileID: 11400000, guid: 1983c3c144b532c47b4d6bafc356a48d, type: 2}
+  isFailedConfig: 0
+--- !u!114 &6719265817312515846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817609476818962109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8db84f5c5a61b3429acab8b12036be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSO: {fileID: 11400000, guid: d2e2f7f6419bedb41a06d5e289f0789e, type: 2}
   chewSFXEvent: {fileID: 11400000, guid: 6d68edbd17a70b94d959d70dd77fdfe1, type: 2}
+  spawnSFXEvent: {fileID: 11400000, guid: 3f08bc4e71fa6b9419bdf70a4465ec82, type: 2}
   isFailedConfig: 0
 --- !u!114 &-3290247927857764523
 MonoBehaviour:
@@ -224,6 +243,62 @@ MonoBehaviour:
       - m_Target: {fileID: 1877609359433655733}
         m_TargetAssemblyTypeName: TargetOnCick, Assembly-CSharp
         m_MethodName: OnClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1371231734461863803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817609476818962109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8b6b4a77faebc498eb6502ee47f509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: 55328e9f48a2475489c12565c945a8df, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6719265817312515846}
+        m_TargetAssemblyTypeName: TargetSFX, Assembly-CSharp
+        m_MethodName: PlaySpawnSFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1930597789222904103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817609476818962109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8b6b4a77faebc498eb6502ee47f509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: 2fc8dae05f13a7346acce6bf8e7b340a, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6719265817312515846}
+        m_TargetAssemblyTypeName: TargetSFX, Assembly-CSharp
+        m_MethodName: PlayClickSFX
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

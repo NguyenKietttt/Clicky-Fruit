@@ -7,10 +7,10 @@ public class TargetOnCick : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private IntEventSO onTargetClickEvent;
+    [SerializeField] private IntEventSO onTargetClickSFXEvent;
     [SerializeField] private TextFloatEventSO floatScoreEvent;
     [SerializeField] private VFXEventSO rippleVFXEvent;
     [SerializeField] private VFXEventSO explosionVFXPosEvent;
-    [SerializeField] private SFXEventSO chewSFXEvent;
 
     [Header("Validation")]
     [SerializeField] private bool isFailedConfig;
@@ -23,13 +23,13 @@ public class TargetOnCick : MonoBehaviour
         CustomLogs.Instance.Warning(targetSO == null, "targetSO is missing!!!");
 
         CustomLogs.Instance.Warning(onTargetClickEvent == null, "onTargetClickEvent is missing!!!");
+        CustomLogs.Instance.Warning(onTargetClickSFXEvent == null, "onTargetClickSFXEvent is missing!!!");
         CustomLogs.Instance.Warning(floatScoreEvent == null, "floatScoreEvent is missing!!!");
         CustomLogs.Instance.Warning(explosionVFXPosEvent == null, "explosionVFXPosEvent is missing!!!");
-        CustomLogs.Instance.Warning(explosionVFXPosEvent == null, "explosionVFXPosEvent is missing!!!");
-        CustomLogs.Instance.Warning(chewSFXEvent == null, "chewSFXEvent is missing!!!");
+        CustomLogs.Instance.Warning(rippleVFXEvent == null, "rippleVFXEvent is missing!!!");
 
-        isFailedConfig = targetSO == null || onTargetClickEvent == null || floatScoreEvent == null
-            || explosionVFXPosEvent == null || explosionVFXPosEvent == null || chewSFXEvent == null;
+        isFailedConfig = targetSO == null || onTargetClickEvent == null || onTargetClickSFXEvent == null 
+            || floatScoreEvent == null || explosionVFXPosEvent == null || rippleVFXEvent == null;
     }
 
 
@@ -49,7 +49,7 @@ public class TargetOnCick : MonoBehaviour
 
         if (gameObject.CompareTag("Bad Target"))
         {
-            var badTarget = (targetSO as BadTargetSO);
+            var badTarget = (BadTargetSO)targetSO;
 
             badTarget.Explode(cachedTransform.position);
 
@@ -59,19 +59,14 @@ public class TargetOnCick : MonoBehaviour
 
         if (gameObject.CompareTag("Good Target"))
         {
-            var goodTarget = (targetSO as GoodTargetSO);
+            var goodTarget = (GoodTargetSO)targetSO;
 
-            RaiseSFXEvent(goodTarget.Sounds[0]);
             RaiseFloatScoreEvent(goodTarget.Point);
         }
 
+        onTargetClickSFXEvent.RaiseEvent(gameObject.GetInstanceID());
         RaiseVFXEvent(targetSO.ExplotionVFX, cachedTransform.position, targetSO.Lifetime, explosionVFXPosEvent);
         ObjectPooler.Instance.ReturnGameObjectToPool(gameObject);
-    }
-
-    private void RaiseSFXEvent(AudioClip clip)
-    {
-        chewSFXEvent.RaiseEvent(clip);
     }
 
     private void RaiseVFXEvent(GameObject vfxObject, Vector3 position, float lifetime, VFXEventSO e)

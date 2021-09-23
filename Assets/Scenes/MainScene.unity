@@ -365,7 +365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 716.2914, y: -36.990585}
+  m_AnchoredPosition: {x: 716.2914, y: -36.9906}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36216856
@@ -914,7 +914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80.00003, y: -36.990585}
+  m_AnchoredPosition: {x: 80.00003, y: -36.9906}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &265059014
@@ -3463,6 +3463,8 @@ GameObject:
   - component: {fileID: 1296939875}
   - component: {fileID: 1296939876}
   - component: {fileID: 1296939878}
+  - component: {fileID: 1296939879}
+  - component: {fileID: 1296939880}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3763,6 +3765,62 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1296939879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296939871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0309edd3ce3ff641a99be04088a4c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: 3f08bc4e71fa6b9419bdf70a4465ec82, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1296939875}
+        m_TargetAssemblyTypeName: AudioMixer, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1296939880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296939871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0309edd3ce3ff641a99be04088a4c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: ac8d7c1280b48d54a859eaff433da62a, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1296939875}
+        m_TargetAssemblyTypeName: AudioMixer, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1470873719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +3911,8 @@ GameObject:
   - component: {fileID: 1611319334}
   - component: {fileID: 1611319331}
   - component: {fileID: 1611319332}
+  - component: {fileID: 1611319335}
+  - component: {fileID: 1611319333}
   m_Layer: 0
   m_Name: Sensor
   m_TagString: Bound
@@ -3885,8 +3945,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6679b363a1be84da514e86942aefbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: cfb61399add8ed44b8d35f99e214ea4d, type: 3}
   lifeScoreEvent: {fileID: 11400000, guid: a94acc22b1e73eb46b4df73b43c1f82d, type: 2}
+  sensorSFXEvent: {fileID: 11400000, guid: ac8d7c1280b48d54a859eaff433da62a, type: 2}
   isFailedConfig: 0
+--- !u!114 &1611319333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611319330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db37f6c9a8b153643a7cfb5911fa8945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: c5ae194556eb7ed4fbbd20ab220abb4a, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1611319332}
+        m_TargetAssemblyTypeName: SensorTrigger, Assembly-CSharp
+        m_MethodName: OnGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1611319334
 Transform:
   m_ObjectHideFlags: 0
@@ -3901,6 +3991,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1611319335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611319330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8b6b4a77faebc498eb6502ee47f509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: df35e6e4ccb2be749b0622b19e8dde3e, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1611319332}
+        m_TargetAssemblyTypeName: SensorTrigger, Assembly-CSharp
+        m_MethodName: OnGameplay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1669317907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3969,9 +4087,9 @@ Canvas:
   m_GameObject: {fileID: 1669317907}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 534669904}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4042,7 +4160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSO: {fileID: 11400000, guid: afee6b870dea2b14d961e842e37e9b66, type: 2}
-  burgerSFXEvent: {fileID: 0}
+  targetSpawnEvent: {fileID: 11400000, guid: 55328e9f48a2475489c12565c945a8df, type: 2}
   isFailedConfig: 0
 --- !u!4 &1770050816
 Transform:

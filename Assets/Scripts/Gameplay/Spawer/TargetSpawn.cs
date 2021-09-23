@@ -6,6 +6,9 @@ public class TargetSpawn : StateBase
     [Header("Configs")]
     [SerializeField] private SpawnSO spawnSO;
 
+    [Header("Events")]
+    [SerializeField] private IntEventSO targetSpawnEvent;
+
     [Header("Validation")]
 	[SerializeField] private bool isFailedConfig;
 
@@ -17,7 +20,9 @@ public class TargetSpawn : StateBase
     {
         CustomLogs.Instance.Warning(spawnSO == null, "Spawn Data is missing!!!");
 
-        isFailedConfig = spawnSO == null;
+        CustomLogs.Instance.Warning(targetSpawnEvent == null, "targetSpawnEvent Data is missing!!!");
+
+        isFailedConfig = spawnSO == null || targetSpawnEvent == null;
     }
 
 
@@ -81,7 +86,9 @@ public class TargetSpawn : StateBase
             yield return new WaitForSeconds(time);
 
             var index = Random.Range(0, spawnSO.SpawnTargets.Count);
-            ObjectPooler.Instance.GetObjectFromPool(spawnSO.SpawnTargets[index]);
+            var target = ObjectPooler.Instance.GetObjectFromPool(spawnSO.SpawnTargets[index]);
+
+            targetSpawnEvent.RaiseEvent(target.gameObject.GetInstanceID());
         }
     }
 }

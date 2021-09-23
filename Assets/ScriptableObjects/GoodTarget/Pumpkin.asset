@@ -22,5 +22,6 @@ MonoBehaviour:
   lifetime: 1
   sounds:
   - {fileID: 8300000, guid: 8a44589d4d0103c4d9faefad62b9cd62, type: 3}
+  - {fileID: 8300000, guid: 74af9d9e74886b3439f0a48bc7f4a3b3, type: 3}
   point: 2
   color: {r: 1, g: 0.5, b: 0, a: 1}
