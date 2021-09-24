@@ -66,7 +66,7 @@ public class TargetOnCick : MonoBehaviour
 
         onTargetClickSFXEvent.RaiseEvent(gameObject.GetInstanceID());
         RaiseVFXEvent(targetSO.ExplotionVFX, cachedTransform.position, targetSO.Lifetime, explosionVFXPosEvent);
-        ObjectPooler.Instance.ReturnGameObjectToPool(gameObject);
+        Destroy(gameObject);
     }
 
     private void RaiseVFXEvent(GameObject vfxObject, Vector3 position, float lifetime, VFXEventSO e)

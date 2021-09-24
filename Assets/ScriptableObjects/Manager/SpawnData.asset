@@ -19,11 +19,5 @@ MonoBehaviour:
   - {fileID: 7654582025768070634, guid: 9080f9d3c9915b24681c0efb4fba66bb, type: 3}
   difficulties:
   - index: 0
-    name: Easy
-    spawnTime: 2
-  - index: 1
-    name: Normal
-    spawnTime: 1
-  - index: 2
     name: Hard
     spawnTime: 0.5

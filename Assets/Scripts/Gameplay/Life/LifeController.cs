@@ -4,25 +4,30 @@ public class LifeController : StateBase
 {
     [Header("Configs")]
     [SerializeField] private LifeSO lifeSO;
+    [SerializeField] private AudioClip clip;
 
     [Header("Events")]
     [SerializeField] private VoidEventSO gameoverState;
     [SerializeField] private IntEventSO displayLifeEvent;
+    [SerializeField] private SFXEventSO chewSFXEvent;
 
     [Header("Validation")]
 	[SerializeField] private bool isFailedConfig;
 
     private int currentLife;
-    private bool isGameover;
+    private bool isGameover, isNoSFXPlayed;
 
 
     private void OnValidate() 
     {
         CustomLogs.Instance.Warning(lifeSO == null, "lifeSO is missing!!!");
+
         CustomLogs.Instance.Warning(gameoverState == null, "gameoverState is missing!!!");
         CustomLogs.Instance.Warning(displayLifeEvent == null, "displayLifeEvent is missing!!!");
+        CustomLogs.Instance.Warning(chewSFXEvent == null, "chewSFXEvent is missing!!!");
 
-        isFailedConfig = lifeSO == null || gameoverState == null || displayLifeEvent == null; 
+        isFailedConfig = lifeSO == null || gameoverState == null || displayLifeEvent == null
+            || chewSFXEvent == null; 
     }
 
 
@@ -35,7 +40,7 @@ public class LifeController : StateBase
             return;
 
         currentLife = lifeSO.Lives;
-        isGameover = false;
+        isGameover = isNoSFXPlayed = false;
 
         displayLifeEvent.RaiseEvent(currentLife);
     }
@@ -50,6 +55,12 @@ public class LifeController : StateBase
 
         currentLife = 0;
         isGameover = true;
+
+        if (!isNoSFXPlayed)
+        {
+            chewSFXEvent.RaiseEvent(clip);
+            isNoSFXPlayed = true;
+        }
 
         displayLifeEvent.RaiseEvent(currentLife);
     }

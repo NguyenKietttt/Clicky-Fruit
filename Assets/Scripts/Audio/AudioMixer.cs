@@ -27,7 +27,7 @@ public class AudioMixer : MonoBehaviour
     /// <summary>
     /// Raise by VolumeSlider on TitlePanel
     /// </summary>
-    public void ChangeVolume(float vol)
+    public void ChangeMusicVolume(float vol)
     {
         if (isFailedConfig)
             return;
@@ -36,6 +36,20 @@ public class AudioMixer : MonoBehaviour
 
         // Save audio volume
         audioSO.MusicVolume = vol;
+    }
+
+    /// <summary>
+    /// Raise by VolumeSlider on TitlePanel
+    /// </summary>
+    public void ChangeSoundVolume(float vol)
+    {
+        if (isFailedConfig)
+            return;
+            
+        soundSource.volume = vol;
+
+        // Save audio volume
+        audioSO.SoundVolume = vol;
     }
 
     /// <summary>

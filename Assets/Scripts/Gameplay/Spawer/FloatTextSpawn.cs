@@ -95,8 +95,8 @@ public class FloatTextSpawn : StateBase
     {
         var cachedTransform = scoreFloatObj.transform;
 
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(cachedTransform.DOMove(scoreFloatData.Position + Vector3.up, textFloatSO.MoveUpTime))
+        Sequence floatTextSeq = DOTween.Sequence();
+        floatTextSeq.Append(cachedTransform.DOMove(scoreFloatData.Position + Vector3.up, textFloatSO.MoveUpTime))
             .Append(cachedTransform.DOMove(textFloatSO.EndPos, textFloatSO.MoveToMainScoreTime))
             .Append(meshRenderer.material.DOFade(textFloatSO.Intensity, textFloatSO.FadeTime))
             .OnComplete(() => method());

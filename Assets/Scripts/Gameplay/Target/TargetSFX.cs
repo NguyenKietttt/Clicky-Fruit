@@ -32,12 +32,12 @@ public class TargetSFX : MonoBehaviour
         if ((gameObject.CompareTag("Bad Target")))
         {
             var badTarget = (BadTargetSO)targetSO;
-            spawnSFXEvent.RaiseEvent(badTarget.Sounds[0]);
+            chewSFXEvent.RaiseEvent(badTarget.Sounds[0]);
         }
         else
         {
             var goodTarget = (GoodTargetSO)targetSO;
-            spawnSFXEvent.RaiseEvent(goodTarget.Sounds[0]);
+            chewSFXEvent.RaiseEvent(goodTarget.Sounds[0]);
         }
     }
 

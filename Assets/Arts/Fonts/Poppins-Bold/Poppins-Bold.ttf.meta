@@ -1,16 +1,18 @@
 fileFormatVersion: 2
-guid: 1de092811748445db9e4b7597a8204d1
+guid: f4c99a340a6e6504aa6e992b7a253612
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 200
+  fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Poppins
   fontNames:
-  - Baloo Chettan
-  fallbackFontReferences: []
+  - Poppins
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d1fe0bc1ac9782f4c8f875e1a7cea6d7, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

@@ -50,7 +50,7 @@ public class SensorTrigger : StateBase
             RaiseFloatLifeEvent(other.gameObject);
         }
 
-        ObjectPooler.Instance.ReturnGameObjectToPool(other.gameObject);
+        Destroy(other.gameObject);
     }
 
     private void RaiseFloatLifeEvent(GameObject target)
