@@ -2,20 +2,32 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIPanel : StateBase
 {
-    [Header("References")]
-    [SerializeField] private GameObject titlePanel;
-    [SerializeField] private GameObject gameplayPanel;
-    [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject gameOverPanel;
 
-    [Header("Title")]
+    [Header("Title HUD")]
+    [SerializeField] private GameObject titleCanvas;
+    [SerializeField] private GameObject titlePanel;
     [SerializeField] private List<RectTransform> titleButtons;
 
-    [Header("Gameplay")]
+    [Header("Gameplay HUD")]
+    [SerializeField] private GameObject gameplayPanel;
     [SerializeField] private List<GameObject> borders;
+
+    [Header("Gameover HUD")]
+    [SerializeField] private GameObject gameOverCanvas;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameoverBtn;
+
+    [Header("Countdown HUD")]
+    [SerializeField] private GameObject countdownCanvas;
+    [SerializeField] private TextMeshProUGUI countdownText;
+
+    [Header("Pause HUD")]
+    [SerializeField] private GameObject pausePanel;
 
     [Header("Event")]
     [SerializeField] private VoidEventSO startSpawnEvent;
@@ -23,8 +35,10 @@ public class UIPanel : StateBase
     [Header("Validation")]
     [SerializeField] private bool isFailedConfig;
 
+    private int countdown;
     private bool isPauseState;
-    private RectTransform rectTitlePanel, rectGameplayPanel, rectGameoverPanel;
+    private RectTransform rectTitlePanel, rectGameplayPanel, rectGameoverPanel, rectGameOverbtn, rectCountDown;
+    private GraphicRaycaster raycasterTitle, raycasterGameover;
 
 
     private void OnValidate()
@@ -38,6 +52,18 @@ public class UIPanel : StateBase
             || pausePanel == null || gameOverPanel == null;
     }
 
+    private void Awake()
+    {
+        rectTitlePanel = titlePanel.GetComponent<RectTransform>();
+        rectGameplayPanel = gameplayPanel.GetComponent<RectTransform>();
+        rectGameoverPanel = gameOverPanel.GetComponent<RectTransform>();
+        rectGameOverbtn = gameoverBtn.GetComponent<RectTransform>();
+        rectCountDown = countdownText.GetComponent<RectTransform>();
+
+        raycasterTitle = titleCanvas.GetComponent<GraphicRaycaster>();
+        raycasterGameover = gameOverCanvas.GetComponent<GraphicRaycaster>();
+    }
+
 
     /// <summary>
     /// Raise by TitleMenuState Event from StateManager
@@ -47,9 +73,8 @@ public class UIPanel : StateBase
         if (isFailedConfig)
             return;
 
-        if (rectTitlePanel == null)
-            rectTitlePanel = titlePanel.GetComponent<RectTransform>();
-            
+        StartCoroutine(HideGameplayPanel());
+        StartCoroutine(HideGameoverPanel());
         ShowTitlePanel();
     }
 
@@ -58,11 +83,10 @@ public class UIPanel : StateBase
     /// </summary>
     public override void OnGameplay()
     {
+        countdown = 3;
+
         if (isFailedConfig)
             return;
-
-        if (rectGameplayPanel == null)
-            rectGameplayPanel = gameplayPanel.GetComponent<RectTransform>();
 
         StartCoroutine(HideTitlePanel());
         StartCoroutine(ShowGameplayPanel());
@@ -90,22 +114,18 @@ public class UIPanel : StateBase
         if (isFailedConfig)
             return;
 
-        if (rectGameoverPanel == null)
-            rectGameoverPanel = gameOverPanel.GetComponent<RectTransform>();
-
         StartCoroutine(SlowTimeBeforeGameOver());
     }
 
 
+    #region Title Panel
     private void ShowTitlePanel()
     {
-        titlePanel.SetActive(true);
-
         rectTitlePanel.DOAnchorPos(Vector2.zero, 1.0f)
-            .OnComplete(() => ShowButtonTitlePanel());
+            .OnComplete(() => StartCoroutine(ShowButtonTitlePanel()));
     }
 
-    private void ShowButtonTitlePanel()
+    private IEnumerator ShowButtonTitlePanel()
     {
         Sequence buttonsShowlSeq = DOTween.Sequence();
 
@@ -114,10 +134,16 @@ public class UIPanel : StateBase
             buttonsShowlSeq.Append(item.DOScale(Vector3.one, 0.1f))
                 .Append(item.DOPunchScale(Vector3.one * 0.6f, 0.3f, 6, 0.7f).SetEase(Ease.OutCirc));
         }
+
+        yield return new WaitForSeconds(1.5f);
+
+        raycasterTitle.enabled = true;
     }
 
     private IEnumerator HideTitlePanel()
     {
+        raycasterTitle.enabled = false;
+
         for (int i = titleButtons.Count - 1; i >= 0; i--)
         {
             titleButtons[i].DOScale(Vector3.zero, 0.1f);
@@ -125,27 +151,36 @@ public class UIPanel : StateBase
 
         yield return new WaitForSeconds(0.3f);
 
-        rectTitlePanel.DOAnchorPos(new Vector2(0.0f, 500.0f), 1.0f)
-            .OnComplete(() => titlePanel.SetActive(false));
+        rectTitlePanel.DOAnchorPos(new Vector2(0.0f, 500.0f), 1.0f);
     }
 
+    #endregion
+
+    #region Gameplay Panel
     private IEnumerator ShowGameplayPanel()
     {
-        gameplayPanel.SetActive(true);
-
-        foreach (var item in borders)
-        {
-            item.SetActive(true);
-        }
-
         borders[0].GetComponent<Transform>().DOMoveX(-7.5f, 0.5f);
         borders[1].GetComponent<Transform>().DOMoveX(7.5f, 0.5f);
 
         yield return new WaitForSeconds(0.3f);
 
         rectGameplayPanel.DOAnchorPos(Vector2.zero, 1.0f)
-            .OnComplete(() => startSpawnEvent.RaiseEvent());
+            .OnComplete(() => StartCoroutine(CountDown()));
     }
+
+    private IEnumerator HideGameplayPanel()
+    {
+        rectGameplayPanel.DOAnchorPos(new Vector2(0.0f, 500.0f), 1.0f);
+
+        yield return new WaitForSeconds(0.3f);
+
+        borders[0].GetComponent<Transform>().DOMoveX(-11.5f, 0.5f);
+        borders[1].GetComponent<Transform>().DOMoveX(11.5f, 0.5f);
+    }
+
+    #endregion
+
+    #region Pause Panel
 
     private void ShowPausePanel()
     {
@@ -155,12 +190,79 @@ public class UIPanel : StateBase
             pausePanel.SetActive(false);
     }
 
+    #endregion 
+
+    #region Gameover Panel
+
     IEnumerator SlowTimeBeforeGameOver()
     {
         Time.timeScale = 0.5f;
 
         yield return new WaitForSeconds(1.0f);
         Time.timeScale = 1.0f;
-        gameOverPanel.SetActive(true);
+
+        ShowGameoverPanel();
     }
+
+    private void ShowGameoverPanel()
+    {
+        rectGameoverPanel.DOAnchorPos(Vector2.zero, 1.0f)
+            .OnComplete(() => StartCoroutine(ShowButtonGameoverPanel()));
+    }
+
+    private IEnumerator ShowButtonGameoverPanel()
+    {
+        Sequence buttonsShowlSeq = DOTween.Sequence();
+
+        buttonsShowlSeq.Append(rectGameOverbtn.DOScale(Vector3.one, 0.1f))
+            .Append(rectGameOverbtn.DOPunchScale(Vector3.one * 0.6f, 0.3f, 6, 0.7f).SetEase(Ease.OutCirc));
+
+        yield return new WaitForSeconds(0.5f);
+
+        raycasterGameover.enabled = true;
+    }
+
+    private IEnumerator HideGameoverPanel()
+    {
+        raycasterGameover.enabled = false;
+        rectGameOverbtn.DOScale(Vector3.zero, 0.1f);
+
+        yield return new WaitForSeconds(0.3f);
+
+        rectGameoverPanel.DOAnchorPos(new Vector2(0.0f, 500.0f), 1.0f);
+    }
+
+    #endregion
+
+    #region CountDown
+
+    private IEnumerator CountDown()
+    {
+        countdownCanvas.SetActive(true);
+         countdownText.SetText(countdown.ToString());
+
+        while (countdown > 0)
+        {
+            Sequence countdownSeq = DOTween.Sequence();
+            countdownSeq.Append(rectCountDown.DOScale(Vector2.one * 2.0f, 0.5f))
+                .Append(countdownText.DOFade(0.0f, 0.5f))
+                .OnComplete(() => countdown--);
+
+            yield return new WaitForSeconds(1.0f);
+
+            countdownText.SetText(countdown.ToString());
+
+            rectCountDown.localScale = Vector3.one;
+            countdownText.color = new Color(1, 1, 1, 1);
+        }
+
+        countdownText.SetText("START!");
+
+        yield return new WaitForSeconds(1.0f);
+
+        countdownCanvas.SetActive(false);
+        startSpawnEvent.RaiseEvent();
+    }
+
+    #endregion
 }

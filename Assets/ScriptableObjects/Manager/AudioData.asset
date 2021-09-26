@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - {fileID: 8300000, guid: 26f294028046bf04cab0fa6789f6ca09, type: 3}
-  musicVolume: 0
+  musicVolume: 1
+  soundVolume: 1
