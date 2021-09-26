@@ -287,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 61945589}
   - component: {fileID: 61945590}
+  - component: {fileID: 61945591}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -379,6 +380,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &61945591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61945588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &80542368
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +1021,7 @@ GameObject:
   - component: {fileID: 187110879}
   - component: {fileID: 187110878}
   - component: {fileID: 187110877}
+  - component: {fileID: 187110880}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1096,6 +1143,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187110875}
   m_CullTransparentMesh: 1
+--- !u!114 &187110880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187110875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &230233139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 230233140}
   - component: {fileID: 230233141}
+  - component: {fileID: 230233142}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -1198,6 +1291,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &230233142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230233139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &242222778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,6 +1543,7 @@ GameObject:
   - component: {fileID: 299121071}
   - component: {fileID: 299121070}
   - component: {fileID: 299121069}
+  - component: {fileID: 299121072}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1526,6 +1665,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299121067}
   m_CullTransparentMesh: 1
+--- !u!114 &299121072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299121067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1246801030}
+          m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+          m_MethodName: ChangeCursor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &339040880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,6 +3454,7 @@ GameObject:
   - component: {fileID: 1246801031}
   - component: {fileID: 1246801030}
   - component: {fileID: 1246801027}
+  - component: {fileID: 1246801033}
   - component: {fileID: 1246801029}
   - component: {fileID: 1246801025}
   - component: {fileID: 1246801032}
@@ -3379,18 +3564,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1246801026}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnGameplay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1246801030}
-        m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
         m_MethodName: OnGameplay
         m_Mode: 1
         m_Arguments:
@@ -3580,6 +3753,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: InputCilck, Assembly-CSharp
         m_MethodName: OnGamePause
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1246801033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246801023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8b6b4a77faebc498eb6502ee47f509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listen: {fileID: 11400000, guid: beb70f5ece83ce544893c56fe0aa7e3e, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1246801030}
+        m_TargetAssemblyTypeName: InputCursor, Assembly-CSharp
+        m_MethodName: ChangeCursor
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

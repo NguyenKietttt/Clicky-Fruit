@@ -135,7 +135,7 @@ public class UIPanel : StateBase
                 .Append(item.DOPunchScale(Vector3.one * 0.6f, 0.3f, 6, 0.7f).SetEase(Ease.OutCirc));
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         raycasterTitle.enabled = true;
     }

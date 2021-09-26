@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7654582025768070635}
   - component: {fileID: 7654582025768070624}
   - component: {fileID: 644985814825584865}
+  - component: {fileID: 7897564179910773945}
   - component: {fileID: 23917016847039569}
   - component: {fileID: -125815703974460064}
   - component: {fileID: 6923113613064213437}
@@ -152,6 +153,20 @@ MonoBehaviour:
   floatScoreEvent: {fileID: 11400000, guid: 903968f074c367e46872430207e4dd34, type: 2}
   rippleVFXEvent: {fileID: 11400000, guid: 785ed70a09c9edd4babf2b05834ad07c, type: 2}
   explosionVFXPosEvent: {fileID: 11400000, guid: 1983c3c144b532c47b4d6bafc356a48d, type: 2}
+  isFailedConfig: 0
+--- !u!114 &7897564179910773945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654582025768070634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be182f3e137f8fd4089bfd8a066866e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTargetOver: {fileID: 11400000, guid: beb70f5ece83ce544893c56fe0aa7e3e, type: 2}
   isFailedConfig: 0
 --- !u!114 &23917016847039569
 MonoBehaviour:

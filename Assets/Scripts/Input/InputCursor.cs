@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InputCursor : StateBase
+public class InputCursor : MonoBehaviour
 {
     [Header("Configs")]
     [SerializeField] private InputSO intputSO;
@@ -16,38 +16,6 @@ public class InputCursor : StateBase
         isFailedConfig = intputSO == null;
     }
 
-    /// <summary>
-    /// Raise by TitleMenuState Event from StateManager
-    /// </summary>
-    public override void OnTitleMenu()
-    {
-        if (isFailedConfig)
-            return;
-
-        ChangeCursor(0);
-    }
-
-    /// <summary>
-    /// Raise by GameplayState Event from StateManager
-    /// </summary>
-    public override void OnGameplay()
-    {
-        if (isFailedConfig)
-            return;
-
-        ChangeCursor(1);
-    }
-
-    /// <summary>
-    /// Raise by GameOverState Event from StateManager
-    /// </summary>
-    public override void OnGameOver()
-    {
-        if (isFailedConfig)
-            return;
-
-        ChangeCursor(0);
-    }
 
     /// <summary>
     /// <para>0 - Arrow</para>
