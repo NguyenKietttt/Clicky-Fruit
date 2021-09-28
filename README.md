@@ -31,8 +31,8 @@
 
 ![Start up screenshot](Screenshots/Screenshot4.PNG "Gameover")
 
-## Demo
-Unity Play: [here](https://play.unity.com/mg/other/clicky-fruit)
+## Unity Play
+[Here](https://play.unity.com/mg/other/clicky-fruit)
 
 ## Author
 Kiệt
