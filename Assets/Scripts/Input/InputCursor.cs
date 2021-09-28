@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InputCursor : MonoBehaviour
+public class InputCursor : StateBase
 {
     [Header("Configs")]
     [SerializeField] private InputSO intputSO;
@@ -14,6 +14,12 @@ public class InputCursor : MonoBehaviour
         CustomLogs.Instance.Warning(intputSO == null, "intputSO is missing!!!");
 
         isFailedConfig = intputSO == null;
+    }
+
+
+    public override void OnTitleMenu()
+    {
+        ChangeCursor(0);
     }
 
 

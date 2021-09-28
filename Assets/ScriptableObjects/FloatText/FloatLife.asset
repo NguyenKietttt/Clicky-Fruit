@@ -17,4 +17,4 @@ MonoBehaviour:
   moveUpTime: 0.5
   moveToMainScoreTime: 0.3
   fadeTime: 0.1
-  endPos: {x: 7.25, y: 7.65, z: 0}
+  endPos: {x: 6.75, y: 7.65, z: 0}

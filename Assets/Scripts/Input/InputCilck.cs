@@ -15,6 +15,7 @@ public class InputCilck : StateBase
     private Camera mainCamera;
     private InputAction mousePos;
     private bool isAllowClick;
+    private int gameplayMask;
 
 
     private void OnValidate() 
@@ -44,18 +45,8 @@ public class InputCilck : StateBase
         if (isFailedConfig)
             return;
 
+        gameplayMask = LayerMask.GetMask("Gameplay");
         isAllowClick = true;
-    }
-
-    /// <summary>
-    /// Raise by GamePauseState Event from InputPause
-    /// </summary>
-    public override void OnGamePause()
-    {
-        if (isFailedConfig)
-            return;
-
-        isAllowClick = !isAllowClick;
     }
 
     /// <summary>
@@ -95,7 +86,7 @@ public class InputCilck : StateBase
         
         var ray = mainCamera.ScreenPointToRay(mousePos);
 
-        if (!Physics.Raycast(ray, out var hit, Mathf.Infinity))
+        if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, gameplayMask))
             return;
 
         if (hit.collider != null)

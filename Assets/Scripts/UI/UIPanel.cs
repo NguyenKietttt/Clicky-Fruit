@@ -26,9 +26,6 @@ public class UIPanel : StateBase
     [SerializeField] private GameObject countdownCanvas;
     [SerializeField] private TextMeshProUGUI countdownText;
 
-    [Header("Pause HUD")]
-    [SerializeField] private GameObject pausePanel;
-
     [Header("Event")]
     [SerializeField] private VoidEventSO startSpawnEvent;
 
@@ -36,7 +33,6 @@ public class UIPanel : StateBase
     [SerializeField] private bool isFailedConfig;
 
     private int countdown;
-    private bool isPauseState;
     private RectTransform rectTitlePanel, rectGameplayPanel, rectGameoverPanel, rectGameOverbtn, rectCountDown;
     private GraphicRaycaster raycasterTitle, raycasterGameover;
 
@@ -45,11 +41,10 @@ public class UIPanel : StateBase
     {
         CustomLogs.Instance.Warning(titlePanel == null, "titlePanel is missing!!!");
         CustomLogs.Instance.Warning(gameplayPanel == null, "gameplayPanel is missing!!!");
-        CustomLogs.Instance.Warning(pausePanel == null, "pausePanel is missing!!!");
         CustomLogs.Instance.Warning(gameOverPanel == null, "gameOverPanel is missing!!!");
 
         isFailedConfig = titlePanel == null || gameplayPanel == null
-            || pausePanel == null || gameOverPanel == null;
+            || gameOverPanel == null;
     }
 
     private void Awake()
@@ -90,20 +85,6 @@ public class UIPanel : StateBase
 
         StartCoroutine(HideTitlePanel());
         StartCoroutine(ShowGameplayPanel());
-
-        isPauseState = false;
-    }
-
-    /// <summary>
-    /// Raise by GameOverState Event from StateManager
-    /// </summary>
-    public override void OnGamePause()
-    {
-        if (isFailedConfig)
-            return;
-
-        isPauseState = !isPauseState;
-        ShowPausePanel();
     }
 
     /// <summary>
@@ -179,18 +160,6 @@ public class UIPanel : StateBase
     }
 
     #endregion
-
-    #region Pause Panel
-
-    private void ShowPausePanel()
-    {
-        if (isPauseState)
-            pausePanel.SetActive(true);
-        else
-            pausePanel.SetActive(false);
-    }
-
-    #endregion 
 
     #region Gameover Panel
 
